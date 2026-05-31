@@ -11,6 +11,7 @@ import {
 import CalendarView from './CalendarView'
 import InspectionsMapCard from './InspectionsMapCard'
 import InspectionDetailDrawer from './InspectionDetailDrawer'
+import InspectorsManagementPage from './InspectorsManagementPage'
 import Logo from '../components/Logo'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -149,6 +150,7 @@ const NAV = [
   { id: 'inspections', icon: FileText,    label: 'Inspections', title: 'Inspections',              subtitle: 'All inspection reports' },
   { id: 'recalls',     icon: ShieldAlert, label: 'Recalls',     title: 'Active Recalls',           subtitle: 'Devices with open recalls' },
   { id: 'analytics',   icon: TrendingUp,  label: 'Analytics',   title: 'Analytics',                subtitle: 'Trends & inspector performance' },
+  { id: 'inspectors',  icon: User,        label: 'Inspectors',  title: 'Manage Inspectors',        subtitle: 'Create and manage your team' },
   { id: 'calendar',    icon: CalendarIcon, label: 'Calendar',   title: 'Schedule & Dispatch',      subtitle: 'Assign jobs to technicians' },
   { id: 'clients',     icon: Building2,   label: 'Clients',     title: 'Building Owners',          subtitle: 'Manage who can see which jobs' },
   { id: 'settings',    icon: SettingsIcon, label: 'Settings',   title: 'Company Settings',         subtitle: 'Logo, branding & report header' },
@@ -598,6 +600,10 @@ export default function DashboardPage({ onLogout }) {
               confBuckets={confBuckets}
               parsed={parsed}
             />
+          )}
+
+          {activePage === 'inspectors' && (
+            <InspectorsManagementPage />
           )}
 
           {activePage === 'clients' && (
