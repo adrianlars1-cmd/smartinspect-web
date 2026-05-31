@@ -5,6 +5,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import DashboardPage from './pages/DashboardPage'
 import ClientPortalPage from './pages/ClientPortalPage'
+import SuperAdminPage from './pages/SuperAdminPage'
 import ErrorBoundary from './components/ErrorBoundary'
 import { getMe } from './services/api'
 
@@ -89,6 +90,13 @@ export default function App() {
     )
   }
   if (token && view !== 'reset' && role) {
+    if (role === 'super_admin') {
+      return (
+        <ErrorBoundary>
+          <SuperAdminPage onLogout={handleLogout} />
+        </ErrorBoundary>
+      )
+    }
     if (role === 'building_owner') {
       return (
         <ErrorBoundary>
