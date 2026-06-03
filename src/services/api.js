@@ -112,4 +112,16 @@ export const openInspectionPDF = async (inspectionId) => {
   setTimeout(() => URL.revokeObjectURL(url), 60000)
 }
 
+export const apiClient = api
 export default api
+
+// Super-Admin: Company Management
+export const listCompanies = () => api.get('/admin/companies')
+export const createCompany = (name) => api.post('/admin/companies', { name })
+export const createCompanyAdmin = (companyId, payload) => api.post(`/admin/companies/${companyId}/admin`, payload)
+export const getCompanyStats = (companyId) => api.get(`/admin/companies/${companyId}/stats`)
+
+// Company-Admin: Inspector Management
+export const listInspectors = () => api.get('/auth/users/technicians')
+export const createInspector = (payload) => api.post('/auth/register', { ...payload, role: 'inspector' })
+
